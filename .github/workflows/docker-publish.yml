@@ -45,26 +45,6 @@ jobs:
         token: ${{ secrets.MANIFEST_REPO_PAT }} # ★ マニフェストリポジトリへのプッシュ権限を持つPAT
         ref: main
 
-    # --- Kustomize のインストール ---
-    - name: Install Kustomize
-      run: |
-        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-        sudo mv kustomize /usr/local/bin/
-    - name: List files in manifests directory
-      run: |
-        echo "--- Start Listing Files ---"
-        pwd 
-        ls -laR manifests 
-        echo "--- End Listing Files ---"
-
-    # --- Kustomize でイメージタグを更新 ---
-    - name: Update Kubernetes Manifest with Kustomize
-      run: |
-        cd manifests # 
-        kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web=${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }}
-        echo "Updated kustomization.yaml:"
-        cat kustomization.yaml
-
     # --- 変更をコミット & プッシュ ---
     - name: Commit and push changes
       run: |
