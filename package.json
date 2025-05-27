@@ -1,0 +1,10 @@
+{
+  "name": "my-k8s-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app for Kubernetes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {}
+}
