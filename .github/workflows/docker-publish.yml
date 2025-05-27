@@ -49,6 +49,12 @@ jobs:
       run: |
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
         sudo mv kustomize /usr/local/bin/
+    - name: List files in manifests directory
+      run: |
+        echo "--- Start Listing Files ---"
+        pwd 
+        ls -laR manifests 
+        echo "--- End Listing Files ---"
 
     # --- Kustomize でイメージタグを更新 ---
     - name: Update Kubernetes Manifest with Kustomize
