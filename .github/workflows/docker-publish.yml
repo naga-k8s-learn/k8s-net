@@ -29,9 +29,10 @@ jobs:
         context: . # Dockerfileがある場所 (リポジトリのルート)
         file: ./Dockerfile # Dockerfileのパス
         push: true # trueにするとDocker Hubにプッシュする
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:latest # イメージ名:タグ名
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:latest # イメージ名:タグ名
                                                               # 例: ryonagashiro9280/my-k8s-app:latest
                                                               # ${{ github.sha }} をタグに使うとコミット毎にユニークなタグになる
         # tags: |
         #   ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:latest
         #   ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:${{ github.sha }} # コミットSHAをタグにする例
+        
