@@ -33,8 +33,8 @@ jobs:
         file: ./app/Dockerfile # ★ file パスを変更
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }} # ★ コミットSHAをタグにする
-          ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:latest # (オプション)
+          ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:latest
 
     # --- マニフェストリポジトリのチェックアウト ---
     - name: Checkout manifest repository
@@ -53,7 +53,7 @@ jobs:
     # --- Kustomize でイメージタグを更新 ---
     - name: Update Kubernetes Manifest with Kustomize
       run: |
-        cd manifests # ★ マニフェストのディレクトリに移動
+        cd manifests # 
         kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web=${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }}
         echo "Updated kustomization.yaml:"
         cat kustomization.yaml
@@ -61,11 +61,10 @@ jobs:
     # --- 変更をコミット & プッシュ ---
     - name: Commit and push changes
       run: |
-        cd manifests # ★ マニフェストのディレクトリに移動
+        cd manifests 
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add kustomization.yaml
-        # 変更があった場合のみコミット・プッシュする
         if ! git diff --staged --quiet; then
           git commit -m "Update image tag to ${{ github.sha }} [CI]"
           git push
