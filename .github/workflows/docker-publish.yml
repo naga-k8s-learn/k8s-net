@@ -35,4 +35,4 @@ jobs:
         # tags: |
         #   ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:latest
         #   ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:${{ github.sha }} # コミットSHAをタグにする例
-        
+        #   ${{ secrets.DOCKERHUB_USERNAME }}/my-k8s-app:1.0.0 # バージョンを指定する例
