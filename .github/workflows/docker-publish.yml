@@ -86,3 +86,5 @@ jobs:
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }}
         MANIFEST_REPO: RyoNagashiro9280/k8s-manifest
+
+  
