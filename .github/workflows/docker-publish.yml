@@ -52,13 +52,8 @@ jobs:
     - name: List files in manifests directory
       run: |
         echo "--- Start Listing Files ---"
-<<<<<<< HEAD
         pwd 
         ls -laR manifests 
-=======
-        pwd # 現在のディレクトリを表示
-        ls -laR manifests # 'manifests' ディレクトリの中身を詳細に表示
->>>>>>> 36c4a761f4035f9109de28848d64697158919896
         echo "--- End Listing Files ---"
 
     # --- Kustomize でイメージタグを更新 ---
