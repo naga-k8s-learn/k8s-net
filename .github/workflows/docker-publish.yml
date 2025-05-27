@@ -95,3 +95,4 @@ jobs:
         MANIFEST_REPO: RyoNagashiro9280/k8s-manifest
 
   
+    # --- ワークフローの終了メッセージ ---
