@@ -1,0 +1,18 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Service と Deployment をリソースとして含める
+resources:
+- service.yaml
+- deployment.yaml
+
+# Kustomize が更新するイメージ情報を定義する
+images:
+  # 'kustomize edit set image' で参照する名前 (通常は元のイメージ名)
+  - name: your-dockerhub-username/k8s-learn-web
+    # 新しいイメージ名 (同じでOK)
+    newName: your-dockerhub-username/k8s-learn-web
+    # GitHub Actions で書き換えるための初期タグ (または現在のタグ)
+    newTag: initial-tag
+# 名前のプレフィックスとサフィックスを設定
