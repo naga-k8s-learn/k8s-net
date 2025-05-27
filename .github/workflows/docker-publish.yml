@@ -40,7 +40,7 @@ jobs:
     - name: Checkout manifest repository
       uses: actions/checkout@v4
       with:
-        repository: your-github-username/your-manifest-repo # ★ マニフェストリポジトリを指定
+        repository: RyoNagashiro9280/k8s-manifest # ★ マニフェストリポジトリを指定
         path: manifests # ★ ワーキングディレクトリを 'manifests' に設定
         token: ${{ secrets.MANIFEST_REPO_PAT }} # ★ マニフェストリポジトリへのプッシュ権限を持つPAT
 
