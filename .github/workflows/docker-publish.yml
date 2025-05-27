@@ -40,7 +40,7 @@ jobs:
     - name: Checkout manifest repository
       uses: actions/checkout@v4
       with:
-        repository: your-github-username/your-manifest-repo # ★ マニフェストリポジトリを指定
+        repository: RyoNagashiro9280/k8s-manifest # ★ マニフェストリポジトリを指定
         path: manifests # ★ ワーキングディレクトリを 'manifests' に設定
         token: ${{ secrets.MANIFEST_REPO_PAT }} # ★ マニフェストリポジトリへのプッシュ権限を持つPAT
 
@@ -71,3 +71,11 @@ jobs:
         else
           echo "No changes to commit."
         fi
+
+    # --- 成功メッセージの表示 ---
+    - name: Success message
+      run: echo "Docker image built, pushed, and Kubernetes manifest updated successfully!"
+      if: success() # ★ 成功時のみ実行
+      env:
+        DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/k8s-learn-web:${{ github.sha }}
+        MANIFEST_REPO: RyoNagashiro9280/k8s-manifest
